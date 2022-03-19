@@ -1,52 +1,53 @@
 package com.dsd;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Locale;
 
 public class Hw {
     
-    String first (String str) {
-        String strout = str.substring(0,4)+str.substring(8,13);
-        return strout;
+    static String first (String str) {
+        return str.substring(0,4)+str.substring(8,13);
     }
 
-    String second (String str) {
-        String strout = null;
-
-        return strout;
+    static String second (String str) {
+        String[] st = str.split ("");
+        for (int i=0; i<st.length; i++) {
+            String s = "1234567890-";
+            if (!s.contains(st[i])) st[i]="*";
+        }
+        return String.join("", st);
     }
 
-    String third (String str) {
+    static String third (String str) {
         String[] st = str.split ("-");
         String[] st1 = st[4].split("");
         String[] st2 = {st[1],st[3],st1[1],st1[3]};
-        String strout = String.join("/", st2);
-        return strout;
+        return String.join("/", st2).toLowerCase(Locale.ROOT);
     }
 
-    String fourth (String str) {
-        String strout = null;
-
-        return strout;
+    static StringBuilder fourth (String str) {
+        String[] st = str.split ("-");
+        String[] st1 = st[4].split("");
+        String[] st2 = {st[1],st[3],st1[1],st1[3]};
+        String strout = String.join("/", st2).toUpperCase(Locale.ROOT);
+        StringBuilder sb = new StringBuilder();
+        sb.append("Letters:");
+        sb.append(strout);
+        return sb;
     }
 
-    String fifth (String str) {
-        String strout = (str.toLowerCase(Locale.ROOT).contains("abc")) ? "Номер документа содержит abc" : "Номер документа не содержит abc";
-        return strout;
+    static String fifth (String str) {
+        return (str.toLowerCase(Locale.ROOT).contains("abc")) ? "Номер документа содержит abc" : "Номер документа не содержит abc";
     }
 
-    String sixth (String str) {
-        String strout = (str.indexOf("555")==0) ? "Номер документа начинается с 555" : "Номер документа не начинается с 555";
-        return strout;
+    static String sixth (String str) {
+        return (str.indexOf("555")==0) ? "Номер документа начинается с 555" : "Номер документа не начинается с 555";
     }
 
-    String seventh (String str) {
-        String strout = (str.lastIndexOf("1a2b")==18) ? "Номер документа заканчивается 1a2b" : "Номер документа не заканчивается 1a2b";
-        return strout;
+    static String seventh (String str) {
+        return (str.lastIndexOf("1a2b")==18) ? "Номер документа заканчивается 1a2b" : "Номер документа не заканчивается 1a2b";
     }
 
-    boolean check (String str){
+    static boolean check (String str){
         String[] st = str.split ("");
         String s = "1234567890";
         String s2 = "-";
@@ -71,8 +72,7 @@ public class Hw {
         if (!s.contains(st[18])) return false;
         if (s.contains(st[19])) return false;
         if (!s.contains(st[20])) return false;
-        if (s.contains(st[21])) return false;
-        return true;
+        return !s.contains(st[21]);
     }
 
 
